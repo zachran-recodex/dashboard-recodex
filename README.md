@@ -46,35 +46,44 @@ Selamat datang di dokumentasi Template Admin Recodex ID! Template ini dibangun d
 
 ### 1. Persiapan Awal
 
-````bash
 # Clone repositori
+
 ```bash
 git clone https://github.com/zachran-recodex/dashboard-recodex.git
 cd dashboard-recodex
-````
+```
 
 # Instal dependensi PHP
 
+```bash
 composer install
+```
 
 # Instal dependensi JavaScript
 
+```bash
 npm install
-
-````
+```
 
 ### 2. Konfigurasi Lingkungan
 
-```bash
 # Salin file environment
+
+```bash
 cp .env.example .env
+```
 
 # Generate kunci aplikasi
+
+```bash
 php artisan key:generate
+```
 
 # Siapkan database
+
+```bash
 touch database/database.sqlite
-````
+```
 
 ### 3. Migrasi Database
 
