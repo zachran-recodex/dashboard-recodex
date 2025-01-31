@@ -1,4 +1,4 @@
-@props(['class' => 'w-6 h-6'])
+@props(['class' => 'w-5 h-5'])
 
 <svg {{ $attributes->merge(['class' => $class]) }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
     stroke="currentColor">
