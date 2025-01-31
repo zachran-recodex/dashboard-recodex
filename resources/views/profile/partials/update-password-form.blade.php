@@ -1,6 +1,6 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-shark-900">
+        <h2 class="text-lg font-medium text-shark-950">
             Update Password
         </h2>
 
@@ -15,7 +15,7 @@
 
         <!-- Current Password -->
         <div>
-            <label for="update_password_current_password" class="block text-sm font-medium text-shark-700">
+            <label for="update_password_current_password" class="block text-sm font-medium text-shark-600">
                 Current Password
             </label>
             <input id="update_password_current_password" name="current_password" type="password"
@@ -28,7 +28,7 @@
 
         <!-- New Password -->
         <div>
-            <label for="update_password_password" class="block text-sm font-medium text-shark-700">
+            <label for="update_password_password" class="block text-sm font-medium text-shark-600">
                 New Password
             </label>
             <input id="update_password_password" name="password" type="password"
@@ -41,7 +41,7 @@
 
         <!-- Confirm Password -->
         <div>
-            <label for="update_password_password_confirmation" class="block text-sm font-medium text-shark-700">
+            <label for="update_password_password_confirmation" class="block text-sm font-medium text-shark-600">
                 Confirm Password
             </label>
             <input id="update_password_password_confirmation" name="password_confirmation" type="password"
@@ -54,7 +54,7 @@
 
         <div class="flex items-center gap-4">
             <button type="submit"
-                class="px-4 py-2 bg-primary-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-primary-600 focus:bg-primary-600 active:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                class="px-4 py-2 bg-primary-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-primary-500 focus:bg-primary-500 active:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition ease-in-out duration-150">
                 Save
             </button>
 

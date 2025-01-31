@@ -1,6 +1,6 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-shark-900">
+        <h2 class="text-lg font-medium text-shark-950">
             Profile Information
         </h2>
 
@@ -19,7 +19,7 @@
 
         <!-- Name -->
         <div>
-            <label for="name" class="block text-sm font-medium text-shark-700">
+            <label for="name" class="block text-sm font-medium text-shark-600">
                 Name
             </label>
             <input id="name" name="name" type="text" value="{{ old('name', $user->name) }}" required
@@ -32,7 +32,7 @@
 
         <!-- Email -->
         <div>
-            <label for="email" class="block text-sm font-medium text-shark-700">
+            <label for="email" class="block text-sm font-medium text-shark-600">
                 Email
             </label>
             <input id="email" name="email" type="email" value="{{ old('email', $user->email) }}" required
@@ -44,7 +44,7 @@
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
                 <div>
-                    <p class="text-sm mt-2 text-shark-800">
+                    <p class="text-sm mt-2 text-shark-600">
                         Your email address is unverified.
 
                         <button form="send-verification"
@@ -64,7 +64,7 @@
 
         <div class="flex items-center gap-4">
             <button type="submit"
-                class="px-4 py-2 bg-primary-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-primary-600 focus:bg-primary-600 active:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                class="px-4 py-2 bg-primary-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-primary-600 focus:bg-primary-600 active:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-600 focus:ring-offset-2 transition ease-in-out duration-150">
                 Save
             </button>
 

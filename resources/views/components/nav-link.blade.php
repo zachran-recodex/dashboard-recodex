@@ -2,11 +2,9 @@
 
 @php
     $classes =
-        $active ?? false
-            ? 'bg-gray-50 text-primary-600 dark:bg-gray-800 dark:text-primary-400'
-            : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50 dark:text-gray-200 dark:hover:text-white dark:hover:bg-gray-800';
+        $active ?? false ? 'bg-shark-50 text-primary-500' : 'text-shark-950 hover:bg-shark-50 hover:text-primary-500';
 @endphp
 
-<a {{ $attributes->merge(['class' => $classes]) }}>
+<a {{ $attributes->merge(['class' => 'flex items-center p-2 rounded-md gap-x-3 ' . $classes]) }}>
     {{ $slot }}
 </a>

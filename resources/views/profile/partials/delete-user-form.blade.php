@@ -1,6 +1,6 @@
 <section class="space-y-6">
     <header>
-        <h2 class="text-lg font-medium text-shark-900">
+        <h2 class="text-lg font-medium text-shark-950">
             Delete Account
         </h2>
 

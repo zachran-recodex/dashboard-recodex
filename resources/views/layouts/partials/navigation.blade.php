@@ -1,31 +1,58 @@
-<!-- resources/views/layouts/navigation.blade.php -->
 <nav class="flex flex-col flex-1">
-    <ul role="list" class="flex flex-col flex-1 gap-y-7">
+    <ul role="list" class="flex flex-col flex-1 gap-y-6">
         <li>
+            <h2 class="text-xs font-semibold leading-6 text-shark-400 uppercase">PAGES</h2>
+
             <ul role="list" class="-mx-2 space-y-1">
-                <!-- Dashboard -->
-                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')"
-                    class="flex items-center p-2 text-gray-700 rounded-md hover:bg-gray-50 gap-x-3 dark:text-gray-200 dark:hover:bg-gray-800">
-                    <svg class="w-6 h-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-                    </svg>
+                <!-- Dashboard Link -->
+                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="flex items-center p-2 rounded-md gap-x-3">
+                    <x-icons.house
+                        class="w-6 h-6 shrink-0 {{ request()->routeIs('dashboard') ? 'text-primary-500' : 'text-shark-400' }}" />
                     Dashboard
                 </x-nav-link>
+
+                <!-- Client Dropdown -->
+                <li x-data="{ open: false }">
+                    <button @click="open = !open"
+                        class="flex items-center w-full p-2 rounded-md gap-x-3 hover:bg-shark-100 hover:text-primary-500">
+                        <x-icons.group-people class="w-6 h-6 shrink-0 text-shark-400" />
+                        <span class="flex-1 text-left">Clients</span>
+                        <svg class="w-5 h-5 transition-transform transform" :class="{ 'rotate-180': open }"
+                            fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <ul x-show="open" @click.away="open = false" class="pl-6 mt-1 space-y-1">
+                        <!-- Client List -->
+                        <x-nav-link :href="route('clients.index')" :active="request()->routeIs('clients.index')"
+                            class="flex items-center p-2 rounded-md gap-x-3">
+                            <x-icons.list class="w-5 h-5 shrink-0 text-shark-400" />
+                            List Client
+                        </x-nav-link>
+
+                        <!-- Add Client -->
+                        <x-nav-link :href="route('clients.create')" :active="request()->routeIs('clients.create')"
+                            class="flex items-center p-2 rounded-md gap-x-3">
+                            <x-icons.plus class="w-5 h-5 shrink-0 text-shark-400" />
+                            Add Client
+                        </x-nav-link>
+                    </ul>
+                </li>
             </ul>
         </li>
 
         <!-- Profile Section -->
         <li class="mt-auto">
             <a href="{{ route('profile.edit') }}"
-                class="flex items-center -mx-2 p-2 text-gray-700 rounded-md hover:bg-gray-50 gap-x-3 dark:text-gray-200 dark:hover:bg-gray-800">
-                <img class="w-8 h-8 rounded-full bg-gray-50"
+                class="flex items-center -mx-2 p-2 rounded-md hover:bg-shark-100 gap-x-3 text-shark-950">
+                <img class="w-8 h-8 rounded-full bg-white"
                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt="">
+                    alt="Profile Picture">
                 <div class="flex-1 min-w-0">
                     <div class="text-sm font-semibold leading-6">{{ Auth::user()->name }}</div>
-                    <div class="text-xs leading-5 text-gray-500 truncate dark:text-gray-400">
+                    <div class="text-xs leading-5 text-shark-400">
                         {{ Auth::user()->email }}
                     </div>
                 </div>
