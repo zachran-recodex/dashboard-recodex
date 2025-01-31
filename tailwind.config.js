@@ -1,17 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-    presets: [
-        require('./vendor/wireui/wireui/tailwind.config.js')
-    ],
-
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
-        './vendor/wireui/wireui/src/*.php',
-        './vendor/wireui/wireui/ts/**/*.ts',
-        './vendor/wireui/wireui/src/WireUi/**/*.php',
-        './vendor/wireui/wireui/src/Components/**/*.php',
     ],
 
     darkMode: 'class',
@@ -36,6 +28,34 @@ export default {
                     800: '#3d571d',
                     900: '#344b1c',
                     950: '#19290a',
+                },
+                secondary: {
+                    DEFAULT: '#639c80',
+                    50: '#0a100d',
+                    100: '#141f1a',
+                    200: '#283e33',
+                    300: '#3c5d4d',
+                    400: '#507c67',
+                    500: '#639c80',
+                    600: '#83af9a',
+                    700: '#a2c3b3',
+                    800: '#c1d7cc',
+                    900: '#e0ebe6',
+                    950: '#eff5f2',
+                },
+                accent: {
+                    DEFAULT: '#87f00f',
+                    50: '#0d1802',
+                    100: '#1b3003',
+                    200: '#366006',
+                    300: '#519009',
+                    400: '#6cc00c',
+                    500: '#87f00f',
+                    600: '#9ff33f',
+                    700: '#b7f66f',
+                    800: '#cff99f',
+                    900: '#e7fccf',
+                    950: '#f3fde7',
                 },
                 background: {
                     light: '#f4f6f7',
