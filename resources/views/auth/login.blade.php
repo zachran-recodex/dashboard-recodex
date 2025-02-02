@@ -7,7 +7,6 @@
     @endif
 
     <div class="mb-8">
-        <h2 class="font-bold text-4xl text-primary-500" aria-hidden="true">Recodex ID</h2>
         <h2 class="text-shark-950 text-2xl font-semibold mt-6 mb-2">Log in to your Account</h2>
         <p class="text-shark-600 text-sm">Welcome back! Good to see you again.</p>
     </div>

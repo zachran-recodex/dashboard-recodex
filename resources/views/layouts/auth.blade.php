@@ -22,7 +22,9 @@
 <body class="font-sans text-shark-900 antialiased bg-shark-100">
     <div class="h-screen flex bg-shark-100">
         <!-- Left Side - Login Form -->
-        <div class="h-full w-1/2 flex flex-col justify-center items-center p-12">
+        <div class="h-full w-1/2 flex flex-col items-center justify-center p-12">
+            <h2 class="font-bold text-4xl text-primary-500 mb-4" aria-hidden="true">Recodex ID</h2>
+
             <div class="w-full max-w-md">
                 {{ $slot }}
             </div>

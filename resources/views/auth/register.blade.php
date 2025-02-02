@@ -1,6 +1,5 @@
 <x-auth-layout>
     <div class="mb-8">
-        <h2 class="font-bold text-4xl text-primary-500" aria-hidden="true">Recodex ID</h2>
         <h2 class="text-shark-950 text-2xl font-semibold mt-6 mb-2">Register Account</h2>
         <p class="text-shark-600 text-sm">Create your account by filling out the information below.</p>
     </div>
