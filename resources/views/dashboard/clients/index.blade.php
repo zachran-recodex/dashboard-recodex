@@ -246,21 +246,9 @@
                 </div>
 
                 <!-- Pagination -->
-                @if ($clients->hasPages())
-                    <div class="px-6 py-4 border-t border-shark-100">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <p class="text-sm text-shark-700">
-                                    Showing {{ $clients->firstItem() }} to {{ $clients->lastItem() }} of
-                                    {{ $clients->total() }} clients
-                                </p>
-                            </div>
-                            <div>
-                                {{ $clients->links() }}
-                            </div>
-                        </div>
-                    </div>
-                @endif
+                <div class="px-6 py-4 bg-white border-t rounded-b-lg border-shark-100">
+                    {{ $clients->links() }}
+                </div>
             </div>
         </div>
         @if (session('success'))

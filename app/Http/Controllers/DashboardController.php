@@ -8,7 +8,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $clients = Client::all();
+        $clients = Client::orderByDesc('id')->paginate(10);
 
         return view('dashboard.index', compact('clients'));
     }
