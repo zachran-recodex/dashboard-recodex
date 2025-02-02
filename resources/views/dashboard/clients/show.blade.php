@@ -7,13 +7,15 @@
                 <p class="mt-1 text-sm text-shark-500">View detailed information about the client</p>
             </div>
             <div class="mt-4 sm:mt-0 space-x-3">
-                <a href="{{ route('clients.edit', $client) }}"
-                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-primary-500 rounded-md hover:bg-primary-600">
-                    Edit Client
-                </a>
                 <a href="{{ route('clients.index') }}"
-                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-shark-700 bg-white border border-shark-300 rounded-md hover:bg-shark-50">
+                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-shark-700 bg-white border border-shark-300 rounded-md hover:bg-shark-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-shark-300">
+                    <x-icons.left-arrow class="w-5 h-5 mr-2" />
                     Back to List
+                </a>
+                <a href="{{ route('clients.edit', $client) }}"
+                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-primary-500 rounded-md hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                    <x-icons.pen class="w-5 h-5 mr-2" />
+                    Edit Client
                 </a>
             </div>
         </div>
@@ -46,7 +48,7 @@
                                 <p class="text-sm text-shark-500">{{ $client->phone }}</p>
                                 <div class="mt-2">
                                     <a href="https://{{ $client->domain }}" target="_blank"
-                                        class="inline-flex items-center text-primary-600 hover:text-primary-900">
+                                        class="inline-flex items-center text-primary-500 hover:text-primary-600">
                                         {{ $client->domain }}
                                     </a>
                                 </div>
@@ -92,11 +94,6 @@
                                 </dd>
                             </div>
 
-                            <div class="col-span-2">
-                                <dt class="text-sm font-medium text-shark-500">Address</dt>
-                                <dd class="mt-1 text-sm text-shark-900">{{ $client->address }}</dd>
-                            </div>
-
                             <div>
                                 <dt class="text-sm font-medium text-shark-500">Created At</dt>
                                 <dd class="mt-1 text-sm text-shark-900">{{ $client->created_at->format('d F Y') }}
@@ -108,6 +105,12 @@
                                 <dd class="mt-1 text-sm text-shark-900">{{ $client->updated_at->format('d F Y') }}
                                 </dd>
                             </div>
+
+                            <div class="col-span-2">
+                                <dt class="text-sm font-medium text-shark-500">Address</dt>
+                                <dd class="mt-1 text-sm text-shark-900">{{ $client->address }}</dd>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -128,11 +131,7 @@
                                     <div>
                                         <span
                                             class="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center ring-8 ring-white">
-                                            <svg class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24"
-                                                stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                            </svg>
+                                            <x-icons.clock class="h-5 w-5 text-green-600" />
                                         </span>
                                     </div>
                                     <div class="min-w-0 flex-1">

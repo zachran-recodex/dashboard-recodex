@@ -189,12 +189,12 @@
                                 </td>
 
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-shark-500">
-                                    {{ $client->created_at->format('M d, Y') }}
+                                    {{ $client->created_at->format('d M Y') }}
                                 </td>
 
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-shark-500">
                                     <span class="{{ $client->expiry_date->isPast() ? 'text-red-600' : '' }}">
-                                        {{ $client->expiry_date->format('M d, Y') }}
+                                        {{ $client->expiry_date->format('d M Y') }}
                                     </span>
                                 </td>
 
@@ -209,7 +209,7 @@
                                             <x-icons.pen class="w-5 h-5" />
                                         </a>
                                         <form action="{{ route('clients.destroy', $client) }}" method="POST"
-                                            class="inline">
+                                            class="inline-flex">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="text-red-600 hover:text-red-900"

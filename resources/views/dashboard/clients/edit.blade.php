@@ -7,23 +7,15 @@
                 <p class="mt-1 text-sm text-shark-500">Update client information</p>
             </div>
             <div class="mt-4 sm:mt-0 space-x-3">
-                <a href="{{ route('clients.show', $client) }}"
-                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-shark-700 bg-white border border-shark-300 rounded-md hover:bg-shark-50">
-                    <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                    </svg>
-                    View Details
-                </a>
                 <a href="{{ route('clients.index') }}"
-                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-shark-700 bg-white border border-shark-300 rounded-md hover:bg-shark-50">
-                    <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M11 17l-5-5m0 0l5-5m-5 5h12" />
-                    </svg>
+                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-shark-700 bg-white border border-shark-300 rounded-md hover:bg-shark-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-shark-300">
+                    <x-icons.left-arrow class="w-5 h-5 mr-2" />
                     Back to List
+                </a>
+                <a href="{{ route('clients.show', $client) }}"
+                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-primary-500 rounded-md hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                    <x-icons.eye class="w-5 h-5 mr-2" />
+                    View Details
                 </a>
             </div>
         </div>
@@ -79,13 +71,16 @@
                                 <select name="status" id="status"
                                     class="mt-1 block w-full rounded-md border-0 py-2 text-shark-900 shadow-sm ring-1 ring-inset ring-shark-200 focus:ring-2 focus:ring-primary-500 sm:text-sm">
                                     <option value="active"
-                                        {{ old('status', $client->status) == 'active' ? 'selected' : '' }}>Active
+                                        {{ old('status', $client->status) == 'active' ? 'selected' : '' }}>
+                                        Active
                                     </option>
                                     <option value="inactive"
-                                        {{ old('status', $client->status) == 'inactive' ? 'selected' : '' }}>Inactive
+                                        {{ old('status', $client->status) == 'inactive' ? 'selected' : '' }}>
+                                        Inactive
                                     </option>
                                     <option value="suspended"
-                                        {{ old('status', $client->status) == 'suspended' ? 'selected' : '' }}>Suspended
+                                        {{ old('status', $client->status) == 'suspended' ? 'selected' : '' }}>
+                                        Suspended
                                     </option>
                                 </select>
                                 @error('status')
@@ -170,12 +165,12 @@
                         <!-- Form Actions -->
                         <div class="flex items-center justify-end gap-x-3">
                             <a href="{{ route('clients.index') }}"
-                                class="px-4 py-2 text-sm font-medium text-shark-700 bg-white border border-shark-300 rounded-md hover:bg-shark-50">
+                                class="inline-flex items-center px-4 py-2 text-sm font-medium text-shark-700 bg-white border border-shark-300 rounded-md hover:bg-shark-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-shark-300">
                                 Cancel
                             </a>
                             <button type="submit"
-                                class="px-4 py-2 text-sm font-medium text-white bg-primary-500 rounded-md hover:bg-primary-600">
-                                Update Client
+                                class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-primary-500 rounded-md hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                                Update
                             </button>
                         </div>
                     </div>
@@ -201,8 +196,9 @@
                         @method('DELETE')
                         <button type="submit"
                             onclick="return confirm('Are you sure you want to delete this client? This action cannot be undone.')"
-                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700">
-                            Delete Client
+                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600">
+                            <x-icons.trash class="w-5 h-5 mr-2" />
+                            Delete
                         </button>
                     </form>
                 </div>
