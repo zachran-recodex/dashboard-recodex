@@ -47,9 +47,11 @@
         <li class="mt-auto">
             <a href="{{ route('profile.edit') }}"
                 class="flex items-center -mx-2 p-2 rounded-md hover:bg-shark-100 gap-x-3 text-shark-950">
-                <img class="w-8 h-8 rounded-full bg-white"
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt="Profile Picture">
+                <div class="w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center">
+                    <span class="text-primary-600 font-medium text-sm">
+                        {{ substr(Auth::user()->name, 0, 2) }}
+                    </span>
+                </div>
                 <div class="flex-1 min-w-0">
                     <div class="text-sm font-semibold leading-6">{{ Auth::user()->name }}</div>
                     <div class="text-xs leading-5 text-shark-400">
