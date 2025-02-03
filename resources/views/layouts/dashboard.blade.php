@@ -28,7 +28,7 @@
             @include('layouts.partials.header')
 
             <!-- Main content -->
-            <main class="pb-20 pt-10">
+            <main class="py-10">
                 <div class="px-4 sm:px-6 lg:px-8">
                     {{ $slot }}
                 </div>

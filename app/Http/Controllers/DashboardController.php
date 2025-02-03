@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Client;
+use Illuminate\Foundation\Inspiring;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        $clients = Client::orderByDesc('id')->paginate(10);
+        // Ambil kutipan inspirasional
+        $quote = Inspiring::quote();
 
-        return view('dashboard.index', compact('clients'));
+        // Kirim data ke view
+        return view('dashboard.index', [
+            'quote' => $quote,
+        ]);
     }
 }
