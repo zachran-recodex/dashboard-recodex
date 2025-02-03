@@ -124,28 +124,91 @@
                     </div>
                     <div class="p-6">
                         <ul role="list" class="-mb-8">
-                            <li class="relative pb-8">
-                                <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-shark-200"
-                                    aria-hidden="true"></span>
-                                <div class="relative flex space-x-3">
-                                    <div>
-                                        <span
-                                            class="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center ring-8 ring-white">
-                                            <x-icons.clock class="h-5 w-5 text-green-600" />
-                                        </span>
+                            @forelse($client->recentActivities as $activity)
+                                <li class="relative pb-8">
+                                    @unless ($loop->last)
+                                        <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-shark-200"
+                                            aria-hidden="true"></span>
+                                    @endunless
+                                    <div class="relative flex space-x-3">
+                                        <div>
+                                            <span
+                                                class="h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white
+                                    {{ $activity->description === 'created'
+                                        ? 'bg-green-100'
+                                        : ($activity->description === 'deleted'
+                                            ? 'bg-red-100'
+                                            : 'bg-blue-100') }}">
+                                                @if ($activity->description === 'created')
+                                                    <x-icons.plus class="h-5 w-5 text-green-600" />
+                                                @elseif($activity->description === 'deleted')
+                                                    <x-icons.trash class="h-5 w-5 text-red-600" />
+                                                @else
+                                                    <x-icons.pen class="h-5 w-5 text-blue-600" />
+                                                @endif
+                                            </span>
+                                        </div>
+                                        <div class="min-w-0 flex-1">
+                                            <p class="text-sm text-shark-900">
+                                                {{ ucfirst($activity->description) }}
+                                            </p>
+                                            @if ($activity->description === 'updated' && !empty($activity->changes['attributes']))
+                                                <div class="mt-2">
+                                                    <details class="group">
+                                                        <summary
+                                                            class="text-sm text-primary-600 hover:text-primary-700 cursor-pointer">
+                                                            View changes
+                                                        </summary>
+                                                        <div class="mt-2 space-y-1">
+                                                            @foreach ($activity->changes['attributes'] as $field => $newValue)
+                                                                @if (isset($activity->changes['old'][$field]))
+                                                                    <div class="text-xs space-y-1">
+                                                                        <span class="font-medium text-shark-700">
+                                                                            {{ Str::title(str_replace('_', ' ', $field)) }}:
+                                                                        </span>
+                                                                        <div class="ml-2">
+                                                                            <span class="text-red-500 line-through">
+                                                                                @if ($field === 'expiry_date')
+                                                                                    {{ \Carbon\Carbon::parse($activity->changes['old'][$field])->format('H:i:s d-m-Y') }}
+                                                                                @else
+                                                                                    {{ is_bool($activity->changes['old'][$field]) ? ($activity->changes['old'][$field] ? 'Yes' : 'No') : $activity->changes['old'][$field] }}
+                                                                                @endif
+                                                                            </span>
+                                                                            <span class="mx-1">→</span>
+                                                                            <span class="text-green-500">
+                                                                                @if ($field === 'expiry_date')
+                                                                                    {{ \Carbon\Carbon::parse($newValue)->format('H:i:s d-m-Y') }}
+                                                                                @else
+                                                                                    {{ is_bool($newValue) ? ($newValue ? 'Yes' : 'No') : $newValue }}
+                                                                                @endif
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                @endif
+                                                            @endforeach
+                                                        </div>
+                                                    </details>
+                                                </div>
+                                            @endif
+                                            <div class="mt-1 text-sm text-shark-500">
+                                                {{ $activity->created_at->diffForHumans() }}
+                                                @if ($activity->causer)
+                                                    by {{ $activity->causer->name }}
+                                                @endif
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="min-w-0 flex-1">
-                                        <p class="text-sm text-shark-500">Client created</p>
-                                        <p class="mt-0.5 text-sm text-shark-500">
-                                            {{ $client->created_at->diffForHumans() }}
-                                        </p>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
+                            @empty
+                                <li class="text-center py-4">
+                                    <p class="text-sm text-shark-500">No activity recorded yet</p>
+                                </li>
+                            @endforelse
                         </ul>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </x-dashboard-layout>

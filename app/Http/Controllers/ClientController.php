@@ -85,6 +85,10 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
+        $client->load(['activities' => function ($query) {
+            $query->latest()->with('causer')->limit(5);
+        }]);
+
         return view('dashboard.clients.show', compact('client'));
     }
 
