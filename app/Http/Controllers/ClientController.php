@@ -13,17 +13,33 @@ class ClientController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $clients = Client::orderByDesc('id')->paginate(10);
+        // Ambil parameter pencarian dari request
+        $search = $request->query('search');
 
+        // Query dasar untuk mengambil data klien
+        $query = Client::query();
+
+        // Jika ada parameter pencarian, tambahkan kondisi pencarian ke query
+        if ($search) {
+            $query->where('name', 'like', '%' . $search . '%')
+                  ->orWhere('domain', 'like', '%' . $search . '%')
+                  ->orWhere('email', 'like', '%' . $search . '%');
+        }
+
+        // Urutkan data berdasarkan ID secara descending dan paginasi
+        $clients = $query->orderByDesc('id')->paginate(10);
+
+        // Hitung statistik
         $statistics = [
             'total' => Client::count(),
             'active' => Client::where('status', 'active')->count(),
             'expiring_soon' => Client::where('expiry_date', '<=', now()->addDays(30))->count(),
         ];
 
-        return view('dashboard.clients.index', compact('clients', 'statistics'));
+        // Kirim data ke view
+        return view('dashboard.clients.index', compact('clients', 'statistics', 'search'));
     }
 
     /**

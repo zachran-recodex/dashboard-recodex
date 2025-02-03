@@ -64,26 +64,11 @@
                         <form action="{{ route('clients.index') }}" method="GET" class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <x-icons.search class="w-5 h-5 text-shark-400" />
-
                             </div>
                             <input type="text" name="search" value="{{ request('search') }}"
                                 class="block w-full rounded-md border-0 py-2 pl-10 ring-1 ring-inset ring-shark-200 focus:ring-2 focus:ring-primary-500"
-                                placeholder="Search clients...">
+                                placeholder="Search...">
                         </form>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <div class="text-sm text-shark-500">Sort By:</div>
-                        <select name="sort" onchange="this.form.submit()"
-                            class="block rounded-md border-0 text-sm py-2 pl-3 pr-10 ring-1 ring-inset ring-shark-200 focus:ring-2 focus:ring-primary-500">
-                            <option value="name" {{ request('sort') === 'name' ? 'selected' : '' }}>Client
-                                Name</option>
-                            <option value="type" {{ request('sort') === 'type' ? 'selected' : '' }}>Type</option>
-                            <option value="status" {{ request('sort') === 'status' ? 'selected' : '' }}>Status</option>
-                            <option value="created_at" {{ request('sort') === 'created_at' ? 'selected' : '' }}>Created
-                                Date</option>
-                            <option value="expiry_date" {{ request('sort') === 'expiry_date' ? 'selected' : '' }}>
-                                Expiry Date</option>
-                        </select>
                     </div>
                 </div>
             </div>
@@ -127,8 +112,7 @@
                                         <div class="h-10 w-10 flex-shrink-0">
                                             @if ($client->image)
                                                 <img class="h-10 w-10 rounded-full object-cover border border-shark-200"
-                                                    src="{{ Storage::url($client->image) }}"
-                                                    alt="{{ $client->name }}">
+                                                    src="{{ Storage::url($client->image) }}" alt="{{ $client->name }}">
                                             @else
                                                 <div
                                                     class="h-10 w-10 rounded-full bg-primary-100 flex items-center justify-center">
